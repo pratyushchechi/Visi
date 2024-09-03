@@ -11,8 +11,6 @@ services:
       options:
         awslogs-group: "docker_auth"
         awslogs-region: "us-east-1"
-        awslogs-create-group: "true"
-        awslogs-stream-prefix: "auth-service"
 
   guest-service:
     build: ./guest
@@ -24,5 +22,3 @@ services:
       options:
         awslogs-group: "guest_log"
         awslogs-region: "us-east-1"
-        awslogs-create-group: "true"
-        awslogs-stream-prefix: "guest-service"
