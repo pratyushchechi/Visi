@@ -1,27 +1,26 @@
 version: '3'
 services:
   guest:
-    image: your-docker-image-for-guest # Replace with your actual Docker image
+    build: ./guest  # Dockerfile location for the guest service
     container_name: guest-service
     ports:
       - "3001:3001"
     logging:
       driver: awslogs
       options:
-        awslogs-group: "/aws/ecs/guest-service"
-        awslogs-region: "us-west-2" # Replace with your AWS region
-        awslogs-stream: "guest.log"
+        awslogs-group: "/aws/ecs/service-logs"
+        awslogs-region: "us-west-2"
         awslogs-create-group: "true"
 
   auth:
-    image: your-docker-image-for-auth # Replace with your actual Docker image
+    build: ./auth  # Dockerfile location for the auth service
     container_name: auth-service
     ports:
       - "3002:3002"
     logging:
       driver: awslogs
       options:
-        awslogs-group: "/aws/ecs/auth-service"
-        awslogs-region: "us-west-2" # Replace with your AWS region
-        awslogs-stream: "auth.log"
+        awslogs-group: "/aws/ecs/service-logs"
+        awslogs-region: "us-east-1"
         awslogs-create-group: "true"
+
