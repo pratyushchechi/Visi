@@ -9,7 +9,7 @@ services:
       driver: awslogs
       options:
         awslogs-group: "/aws/ecs/service-logs"
-        awslogs-region: "us-west-2"
+        awslogs-region: "us-east-1"
         awslogs-create-group: "true"
 
   auth:
