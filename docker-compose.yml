@@ -1,25 +1,20 @@
-version: '3'
-services:
-  guest:
-    build: ./guest
-    container_name: guest-service
-    ports:
-      - "3001:3001"
-    logging:
-      driver: awslogs
-      options:
-        awslogs-group: "/aws/ecs/service-logs"
-        awslogs-region: "us-east-1"
-        awslogs-create-group: "true"
+version: '3.7'
 
-  auth:
+services:
+  auth-service:
     build: ./auth
-    container_name: auth-service
-    ports:
-      - "3002:3002"
     logging:
       driver: awslogs
       options:
-        awslogs-group: "/aws/ecs/service-logs"
+        awslogs-group: "visi-log-group"
         awslogs-region: "us-east-1"
-        awslogs-create-group: "true"
+        awslogs-stream-prefix: "auth-service"
+
+  guest-service:
+    build: ./guest
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: "visi-log-group"
+        awslogs-region: "us-east-1"
+        awslogs-stream-prefix: "guest-service"
