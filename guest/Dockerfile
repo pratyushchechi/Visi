@@ -4,13 +4,14 @@ FROM python:3.8-slim
 # Set the working directory
 WORKDIR /app
 
-# Copy the current directory contents into the container
-COPY . .
+# Copy only the necessary files
+COPY guest_service.py /app/
+COPY requirements.txt /app/
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Make port 3001 available to the world outside this container
+# Expose port 3001 to the outside world
 EXPOSE 3001
 
 # Define the command to run your application
