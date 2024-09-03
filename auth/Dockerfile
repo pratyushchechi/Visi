@@ -1,11 +1,8 @@
-# Dockerfile in /auth/
-FROM python:3.8-slim
-
 # Set the working directory
 WORKDIR /app
 
 # Copy the current directory contents into the container
-COPY . .
+COPY ./auth/ .  # Ensure the correct path is used
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
