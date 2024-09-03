@@ -1,7 +1,7 @@
 version: '3'
 services:
   guest:
-    build: ./guest  # Dockerfile location for the guest service
+    build: ./guest
     container_name: guest-service
     ports:
       - "3001:3001"
@@ -13,7 +13,7 @@ services:
         awslogs-create-group: "true"
 
   auth:
-    build: ./auth  # Dockerfile location for the auth service
+    build: ./auth
     container_name: auth-service
     ports:
       - "3002:3002"
@@ -23,4 +23,3 @@ services:
         awslogs-group: "/aws/ecs/service-logs"
         awslogs-region: "us-east-1"
         awslogs-create-group: "true"
-
