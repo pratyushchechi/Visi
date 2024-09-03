@@ -5,7 +5,7 @@ FROM python:3.8-slim
 WORKDIR /app
 
 # Copy only the necessary files
-COPY auth/auth_service.py /app/
+COPY /auth_service.py /app/
 
 COPY requirements.txt /app/
 
