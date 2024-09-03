@@ -5,7 +5,8 @@ FROM python:3.8-slim
 WORKDIR /app
 
 # Copy only the necessary files
-COPY auth_service.py /app/
+COPY auth/auth_service.py /app/
+
 COPY requirements.txt /app/
 
 # Install any needed packages specified in requirements.txt
