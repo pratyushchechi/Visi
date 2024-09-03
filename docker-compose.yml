@@ -1,32 +1,24 @@
-version: '3.8'
-
 services:
   auth-service:
     build: ./auth
+    container_name: auth-service
     ports:
-      - "5001:5000"
-    environment:
-      - FLASK_ENV=development
+      - "5000:5000"
     logging:
       driver: awslogs
       options:
-        awslogs-region: us-east-1
-        awslogs-group: docker_auth
-        awslogs-stream-prefix: auth-service
+        awslogs-group: "docker_auth"
+        awslogs-region: "us-east-1"
+        awslogs-stream-prefix: "auth-service"
 
   guest-service:
     build: ./guest
+    container_name: guest-service
     ports:
-      - "5002:5000"
-    environment:
-      - FLASK_ENV=development
+      - "5001:5000"
     logging:
       driver: awslogs
       options:
-        awslogs-region: us-east-1
-        awslogs-group: guest_log
-        awslogs-stream-prefix: guest-service
-
-networks:
-  default:
-    driver: bridge
+        awslogs-group: "guest_log"
+        awslogs-region: "us-east-1"
+        awslogs-stream-prefix: "guest-service"
