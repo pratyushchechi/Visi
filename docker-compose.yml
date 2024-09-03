@@ -1,3 +1,5 @@
+version: '3.7'
+
 services:
   auth-service:
     build: ./auth
@@ -9,6 +11,7 @@ services:
       options:
         awslogs-group: "docker_auth"
         awslogs-region: "us-east-1"
+        awslogs-create-group: "true"
         awslogs-stream-prefix: "auth-service"
 
   guest-service:
@@ -21,4 +24,5 @@ services:
       options:
         awslogs-group: "guest_log"
         awslogs-region: "us-east-1"
+        awslogs-create-group: "true"
         awslogs-stream-prefix: "guest-service"
